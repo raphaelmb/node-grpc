@@ -18,7 +18,7 @@ Inicie o servidor com o seguinte comando:
 ```bash
 node server/server.js
 ```
-Cada operação do client está separada em um arquivo próprio.
+Cada operação do client está separada em um arquivo próprio. Execute em outro terminal.
 
 Para buscar todos os clientes:
 ```bash
