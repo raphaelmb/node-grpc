@@ -2,7 +2,7 @@ const clientGrpc = require('./client');
 
 clientGrpc.findAll({}, (error, response) => {
     if (error) {
-        console.log('Error', error)
+        console.log(error)
     }
     
     const { clients } = response;

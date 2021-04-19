@@ -31,12 +31,12 @@ function findOne (_, cb) {
     console.log('Requisição FindOne recebida')
     const id = _.request.id;
     const client = clients.find(client => client.id === id);
-    if (client) {
-        cb(null, client);
-    } else {
+    if (!client) {
         cb({
             code: grpc.status.NOT_FOUND
         });
+    } else {
+        cb(null, client);
     }
 }
 

@@ -8,7 +8,7 @@ const client = {
 
 clientGrpc.create(client, (error, response) => {
     if (error) {
-        console.log('Erro', error)
+        console.log(error)
     }
     console.log('Cliente criado:')
     console.log(response)

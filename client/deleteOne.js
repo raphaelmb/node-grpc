@@ -1,10 +1,10 @@
 const clientGrpc = require('./client');
 
-const id = 3
+const id = 2
 
 clientGrpc.deleteOne({id}, (error, response) => {
     if (error) {
-        console.log('Erro', error)
+        console.log(error)
     }
     console.log('Cliente removido:')
     console.log(response)
