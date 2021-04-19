@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package client;
+
+message Empty {}
+
+message Client {
+    int32 id = 1;
+    string name = 2;
+    string email = 3;
+}
+
+message ClientList {
+    repeated Client clients = 1;
+}
+
+message ClientId {
+    int32 id = 1;
+}
+
+service ClientService {
+    rpc FindAll (Empty) returns (ClientList) {}
+    rpc Create (Client) returns (Client) {}
+    rpc FindOne (ClientId) returns (Client) {}
+}
