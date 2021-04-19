@@ -11,6 +11,7 @@ npm install
 ```
 
 ## Uso
+Todos os comandos devem ser executados na raiz do projeto.
 
 Inicie o servidor com o seguinte comando:
 
