@@ -10,6 +10,6 @@ clientGrpc.create(client, (error, response) => {
     if (error) {
         console.log('Erro', error)
     }
-    console.log('Retorno:')
+    console.log('Cliente criado:')
     console.log(response)
 });

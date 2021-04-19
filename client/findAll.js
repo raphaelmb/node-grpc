@@ -6,6 +6,6 @@ clientGrpc.findAll({}, (error, response) => {
     }
     
     const { clients } = response;
-    console.log('Retorno:')
-    console.log('Clients', clients)
+    console.log('Retorno de todos clientes')
+    console.log(clients)
 });

@@ -6,6 +6,6 @@ clientGrpc.findOne({id}, (error, response) => {
     if (error) {
         console.log('Error', error)
     };
-    console.log('Retorno')
+    console.log('Retorno de um cliente por id')
     console.log(response)
 });

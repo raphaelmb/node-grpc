@@ -22,4 +22,5 @@ service ClientService {
     rpc FindAll (Empty) returns (ClientList) {}
     rpc Create (Client) returns (Client) {}
     rpc FindOne (ClientId) returns (Client) {}
+    rpc DeleteOne (ClientId) returns (Client) {}
 }

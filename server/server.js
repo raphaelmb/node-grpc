@@ -7,7 +7,7 @@ const packageDefinition = protoLoader.loadSync('./clients.proto', {
     defaults: true,
     oneofs: true
    });
-const {clients} = require('./mock');
+const {clients} = require('../mock/mock');
 
 const clientProto = grpc.loadPackageDefinition(packageDefinition).client;
 
@@ -16,14 +16,14 @@ const baseURL = '127.0.0.1:50051'
 const grpcServer = new grpc.Server();
 
 function create (_, cb) {
-    console.log('Requisição de Create recebida')
+    console.log('Requisição Create recebida')
     const client = _.request;
     clients.push(client);
     cb(null, client);
 }
 
 function findAll (_, cb) {
-    console.log('Requisição de FindAll recebida')
+    console.log('Requisição FindAll recebida')
     cb(null, { clients });
 }
 
@@ -40,10 +40,26 @@ function findOne (_, cb) {
     }
 }
 
+function deleteOne (_, cb) {
+    console.log('Requisição DeleteOne recebida')
+    const id = _.request.id;
+    const client = clients.find(client => client.id === id);
+    if (!client) {
+        cb({
+            code: grpc.status.NOT_FOUND
+        });
+    } 
+    const index = clients.indexOf(client)
+    clients.splice(index, 1)
+    cb(null, client);
+}
+
+
 grpcServer.addService(clientProto.ClientService.service, {
     create: create,
     findAll: findAll,
-    findOne: findOne
+    findOne: findOne,
+    deleteOne: deleteOne
 });
 
 grpcServer.bindAsync(`${baseURL}`, grpc.ServerCredentials.createInsecure(), () => {
